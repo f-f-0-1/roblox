@@ -12,7 +12,7 @@
 
 local IncomingData = ...
 assert(IncomingData["Key"], "Loadstring argument must have a Key value in the table!")
-assert(typeof(IncomingData["Key"]) ~= "string", "Key argument in loadstring argument must be a string!")
+assert(typeof(IncomingData["Key"]) == "string", "Key argument in loadstring argument must be a string!")
 
 local Players = game:GetService("Players")
 local TeleportService = game:GetService("TeleportService")
