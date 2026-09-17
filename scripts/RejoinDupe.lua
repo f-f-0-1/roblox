@@ -10,10 +10,7 @@
 -- DO NOT USE THIS IN AUTOEXEC, THE SCRIPT WILL AUTOMATICALLY RE-RUN ITSELF.
 -- PS: This must be called with loadstring.
 
-local IncomingData = {
-    Amount = 5,
-    Key = "jaiegfjoasdfisodgisaoierntj"
-}
+local IncomingData = ...
 assert(IncomingData["Key"], "Loadstring argument must have a Key value in the table!")
 assert(typeof(IncomingData["Key"]) == "string", "Key argument in loadstring argument must be a string!")
 
