@@ -10,7 +10,8 @@
 -- DO NOT USE THIS IN AUTOEXEC, THE SCRIPT WILL AUTOMATICALLY RE-RUN ITSELF.
 -- PS: This must be called with loadstring.
 
-local IncomingData = ...
+local IncomingData = {...}
+IncomingData = IncomingData[1]
 assert(typeof(IncomingData) ~= "table", "Loadstring argument must be a table!")
 assert(IncomingData["Key"], "Loadstring argument must have a Key value in the table!")
 assert(typeof(IncomingData["Key"]) ~= "string", "Key argument in loadstring argument must be a string!")
