@@ -111,7 +111,7 @@ local function Dupe()
         OutArgTable = OutArgTable .. "[" .. tostring(Index) .. "] = " .. tostring(Value) .. (Index == IncomingDataTableLength and "}" or ", ")
     end
     CurrentStats.Index += 1 -- Counts up the index before rejoining
-    QueueOnTeleport(`loadstring(game:HttpGet("http://raw.githubusercontent.com/f-f-0-1/roblox/scripts/RejoinDupe.lua"))({OutArgTable})`)
+    QueueOnTeleport(`loadstring(game:HttpGet("https://raw.githubusercontent.com/f-f-0-1/roblox/refs/heads/main/scripts/RejoinDupe.lua"))({OutArgTable})`)
     task.wait(0.5)
     local Stats = SaveStats()
     TeleportService:TeleportAsync(game.PlaceId, Owner, Stats)
