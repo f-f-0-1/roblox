@@ -10,7 +10,10 @@
 -- DO NOT USE THIS IN AUTOEXEC, THE SCRIPT WILL AUTOMATICALLY RE-RUN ITSELF.
 -- PS: This must be called with loadstring.
 
-local IncomingData = ...
+local IncomingData = {
+    Amount = 5,
+    Key = "jaiegfjoasdfisodgisaoierntj"
+}
 assert(IncomingData["Key"], "Loadstring argument must have a Key value in the table!")
 assert(typeof(IncomingData["Key"]) == "string", "Key argument in loadstring argument must be a string!")
 
@@ -51,12 +54,11 @@ local function SaveStats(Stats)
     -- JoinData in legitimate uses though can be really helpful for some games
     local Options = Instance.new("TeleportOptions")
     Options:SetTeleportData(Stats)
-    Options.ServerInstanceId = game.JobId
 
     return Options
 end
 
-local function RetrieveStats(Stats)
+local function RetrieveStats()
     -- This function will only call when the user is rejoined and the script runs again.
     local Data = TeleportService:GetLocalPlayerTeleportData()
 
@@ -97,7 +99,7 @@ local function Dupe()
         end
     end
     if CurrentStats.Index == CurrentStats.DupeAmount then return end
-    Character:PivotTo(CurrentStats.ToolStorePos)
+    Character:PivotTo(CFrame.new(CurrentStats.ToolStorePos))
     EquipTools(true)
     task.wait(.25)
     DropTools()
@@ -112,8 +114,8 @@ local function Dupe()
     CurrentStats.Index += 1 -- Counts up the index before rejoining
     QueueOnTeleport(`loadstring(game:HttpGet("https://raw.githubusercontent.com/f-f-0-1/roblox/refs/heads/main/scripts/RejoinDupe.lua"))({OutArgTable})`)
     task.wait(0.5)
-    local Stats = SaveStats()
-    TeleportService:TeleportAsync(game.PlaceId, Owner, Stats)
+    local Stats = SaveStats(CurrentStats)
+    TeleportService:Teleport(game.PlaceId, Stats)
 end
 
 Dupe()
